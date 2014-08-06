@@ -1,15 +1,57 @@
 var Future = Npm.require("fibers/future");
 
-reddcoin = function(user, pass) {
-    this.user = user;
-    this.pass = pass;
-
-    this.rdd = Npm.require("node-reddcoin")({
-        user: this.user,
-        pass: this.pass
-    });
+reddcoin = function(object) {
+    this.rdd = Npm.require("node-reddcoin")(object);
 };
 
+// reddcoind getbalance [account]
+reddcoin.prototype.balance = function(account) {
+    var future = new Future();
+
+    if(account) {
+        this.rdd.exec("getbalance", account, function(err, balance) {
+            if(err) return console.log(err);
+
+            future.return(balance);
+        });
+    } else {
+        this.rdd.exec("getbalance", function(err, balance) {
+            if(err) return console.log(err);
+
+            future.return(balance);
+        });
+    }
+
+    return future.wait();
+};
+
+// reddcoind getinfo
+reddcoin.prototype.info = function() {
+    var future = new Future();
+
+    this.rdd.exec("getinfo", function(err, info) {
+        if(err) return console.log(err);
+
+        future.return(info);
+    });
+
+    return future.wait();
+}
+
+// reddcoind gettransaction txid
+reddcoin.prototype.transaction = function(txid) {
+    var future = new Future();
+
+    this.rdd.exec("gettransaction", txid, function(err, transaction) {
+        if(err) return console.log(err);
+
+        future.return(transaction);
+    });
+
+    return future.wait();
+};
+
+// reddcoind listtransactions
 reddcoin.prototype.transactions = function() {
     var future = new Future();
 
@@ -22,14 +64,15 @@ reddcoin.prototype.transactions = function() {
     return future.wait();
 };
 
-reddcoin.prototype.balance = function() {
+// reddcoind listaccounts
+reddcoin.prototype.accounts = function() {
     var future = new Future();
 
-    this.rdd.exec("getbalance", function(err, balance) {
+    this.rdd.exec("listaccounts", function(err, accounts) {
         if(err) return console.log(err);
 
-        future.return(balance);
+        future.return(accounts);
     });
 
     return future.wait();
-}
+};
