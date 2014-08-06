@@ -107,6 +107,10 @@ reddcoin.prototype.stake = function() {
 reddcoin.prototype.unlock = function(passphrase, timeout, stakeonly) {
     var future = new Future();
 
+    if(stakeonly == undefined) {
+        stakeonly = false;
+    }
+
     this.rdd.exec("walletpassphrase", passphrase, timeout, stakeonly, function(err, unlock) {
         if(err) return console.log(err);
 
