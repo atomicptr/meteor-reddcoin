@@ -1,0 +1,8 @@
+{
+    "name": "meteor-reddcoin",
+    "description": "node-reddcoin wrapper for meteor",
+    "homepage": "https://github.com/kasok/meteor-reddcoin",
+    "author": "Christopher Kaster <ikasoki@gmail.com> (http://christopher.kaster.ws)",
+    "version": "0.1.0",
+    "git": "https://github.com/kasoki/meteor-reddcoin.git"
+}
