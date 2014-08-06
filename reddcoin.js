@@ -103,7 +103,7 @@ reddcoin.prototype.stake = function() {
     return future.wait();
 };
 
-// reddcoind walletpassphrase
+// reddcoind walletpassphrase passphrase timeout stakeonly?
 reddcoin.prototype.unlock = function(passphrase, timeout, stakeonly) {
     var future = new Future();
 
@@ -128,3 +128,16 @@ reddcoin.prototype.lock = function() {
 
     return future.wait();
 };
+
+// reddcoind send to_address amount [comment]
+reddcoin.prototype.send = function(address, amount, comment) {
+        var future = new Future();
+
+    this.rdd.exec("send", address, amount, comment, function(err, send) {
+        if(err) return console.log(err);
+
+        future.return(send);
+    });
+
+    return future.wait();
+}
