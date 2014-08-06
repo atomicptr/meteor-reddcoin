@@ -89,3 +89,16 @@ reddcoin.prototype.validate = function(address) {
 
     return future.wait();
 };
+
+// reddcoind getstakinginfo
+reddcoin.prototype.stake = function() {
+    var future = new Future();
+
+    this.rdd.exec("getstakinginfo", function(err, stake) {
+        if(err) return console.log(err);
+
+        future.return(stake);
+    });
+
+    return future.wait();
+};
