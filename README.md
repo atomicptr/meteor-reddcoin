@@ -36,6 +36,13 @@ balance = rdd.balance();
 console.log("Balance after transaction: " + balance);
 ```
 
+## Install
+
+Inside your project folder run
+
+    mrt add meteor-reddcoin
+
+
 ## License
 
 meteor-reddcoin is licensed under the terms of the MIT license.
