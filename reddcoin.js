@@ -102,3 +102,29 @@ reddcoin.prototype.stake = function() {
 
     return future.wait();
 };
+
+// reddcoind walletpassphrase
+reddcoin.prototype.unlock = function(passphrase, timeout, stakeonly) {
+    var future = new Future();
+
+    this.rdd.exec("walletpassphrase", passphrase, timeout, stakeonly, function(err, unlock) {
+        if(err) return console.log(err);
+
+        future.return(unlock);
+    });
+
+    return future.wait();
+};
+
+// reddcoind walletlock
+reddcoin.prototype.lock = function() {
+    var future = new Future();
+
+    this.rdd.exec("walletlock", function(err, lock) {
+        if(err) return console.log(err);
+
+        future.return(lock);
+    });
+
+    return future.wait();
+};
