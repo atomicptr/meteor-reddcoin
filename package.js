@@ -1,5 +1,5 @@
 Package.describe({
-    summary: 'node-reddcoin wrapper for meteor'
+    summary: 'Simple library to use reddcoind with meteor'
 });
 
 Npm.depends({
