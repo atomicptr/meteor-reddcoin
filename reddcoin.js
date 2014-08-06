@@ -76,3 +76,16 @@ reddcoin.prototype.accounts = function() {
 
     return future.wait();
 };
+
+// reddcoind validateaddress address
+reddcoin.prototype.validate = function(address) {
+    var future = new Future();
+
+    this.rdd.exec("validateaddress", address, function(err, validate) {
+        if(err) return console.log(err);
+
+        future.return(validate);
+    });
+
+    return future.wait();
+};
