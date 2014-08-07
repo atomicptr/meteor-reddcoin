@@ -135,12 +135,51 @@ reddcoin.prototype.lock = function() {
 
 // reddcoind send to_address amount [comment]
 reddcoin.prototype.send = function(address, amount, comment) {
-        var future = new Future();
+    var future = new Future();
 
     this.rdd.exec("send", address, amount, comment, function(err, send) {
         if(err) return console.log(err);
 
         future.return(send);
+    });
+
+    return future.wait();
+}
+
+// reddcoind getblockcount
+reddcoin.prototype.blockcount = function() {
+    var future = new Future();
+
+    this.rdd.exec("getblockcount", function(err, blockcount) {
+        if(err) return console.log(err);
+
+        future.return(blockcount);
+    });
+
+    return future.wait();
+}
+
+// reddcoind getblockhash [index]
+reddcoin.prototype.blockhash = function(index) {
+    var future = new Future();
+
+    this.rdd.exec("getblockhash", index, function(err, hash) {
+        if(err) return console.log(err);
+
+        future.return(hash);
+    });
+
+    return future.wait();
+}
+
+// reddcoind getblock [hash]
+reddcoin.prototype.block = function(hash) {
+    var future = new Future();
+
+    this.rdd.exec("getblock", hash, function(err, block) {
+        if(err) return console.log(err);
+
+        future.return(block);
     });
 
     return future.wait();
