@@ -10,15 +10,21 @@ reddcoin.prototype.balance = function(account) {
 
     if(account) {
         this.rdd.exec("getbalance", account, function(err, balance) {
-            if(err) return console.log(err);
-
-            future.return(balance);
+            if(err) {
+                console.log(err);
+                future.return(err);
+            } else {
+                future.return(balance);
+            }
         });
     } else {
         this.rdd.exec("getbalance", function(err, balance) {
-            if(err) return console.log(err);
-
-            future.return(balance);
+            if(err) {
+                console.log(err);
+                future.return(err);
+            } else {
+                future.return(balance);
+            }
         });
     }
 
@@ -30,9 +36,12 @@ reddcoin.prototype.info = function() {
     var future = new Future();
 
     this.rdd.exec("getinfo", function(err, info) {
-        if(err) return console.log(err);
-
-        future.return(info);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(info);
+        }
     });
 
     return future.wait();
@@ -43,9 +52,12 @@ reddcoin.prototype.transaction = function(txid) {
     var future = new Future();
 
     this.rdd.exec("gettransaction", txid, function(err, transaction) {
-        if(err) return console.log(err);
-
-        future.return(transaction);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(transaction);
+        }
     });
 
     return future.wait();
@@ -56,9 +68,12 @@ reddcoin.prototype.transactions = function() {
     var future = new Future();
 
     this.rdd.exec("listtransactions", function(err, transactions) {
-        if(err) return console.log(err);
-
-        future.return(transactions);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(transactions);
+        }
     });
 
     return future.wait();
@@ -69,9 +84,12 @@ reddcoin.prototype.accounts = function() {
     var future = new Future();
 
     this.rdd.exec("listaccounts", function(err, accounts) {
-        if(err) return console.log(err);
-
-        future.return(accounts);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(accounts);
+        }
     });
 
     return future.wait();
@@ -82,9 +100,12 @@ reddcoin.prototype.validate = function(address) {
     var future = new Future();
 
     this.rdd.exec("validateaddress", address, function(err, validate) {
-        if(err) return console.log(err);
-
-        future.return(validate);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(validate);
+        }
     });
 
     return future.wait();
@@ -95,9 +116,12 @@ reddcoin.prototype.stake = function() {
     var future = new Future();
 
     this.rdd.exec("getstakinginfo", function(err, stake) {
-        if(err) return console.log(err);
-
-        future.return(stake);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(stake);
+        }
     });
 
     return future.wait();
@@ -112,9 +136,12 @@ reddcoin.prototype.unlock = function(passphrase, timeout, stakeonly) {
     }
 
     this.rdd.exec("walletpassphrase", passphrase, timeout, stakeonly, function(err, unlock) {
-        if(err) return console.log(err);
-
-        future.return(unlock);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(unlock);
+        }
     });
 
     return future.wait();
@@ -125,9 +152,12 @@ reddcoin.prototype.lock = function() {
     var future = new Future();
 
     this.rdd.exec("walletlock", function(err, lock) {
-        if(err) return console.log(err);
-
-        future.return(lock);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(lock);
+        }
     });
 
     return future.wait();
@@ -138,9 +168,12 @@ reddcoin.prototype.send = function(address, amount, comment) {
     var future = new Future();
 
     this.rdd.exec("send", address, amount, comment, function(err, send) {
-        if(err) return console.log(err);
-
-        future.return(send);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(send);
+        }
     });
 
     return future.wait();
@@ -151,9 +184,12 @@ reddcoin.prototype.blockcount = function() {
     var future = new Future();
 
     this.rdd.exec("getblockcount", function(err, blockcount) {
-        if(err) return console.log(err);
-
-        future.return(blockcount);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(blockcount);
+        }
     });
 
     return future.wait();
@@ -164,9 +200,12 @@ reddcoin.prototype.blockhash = function(index) {
     var future = new Future();
 
     this.rdd.exec("getblockhash", index, function(err, hash) {
-        if(err) return console.log(err);
-
-        future.return(hash);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(hash);
+        }
     });
 
     return future.wait();
@@ -177,9 +216,12 @@ reddcoin.prototype.block = function(hash) {
     var future = new Future();
 
     this.rdd.exec("getblock", hash, function(err, block) {
-        if(err) return console.log(err);
-
-        future.return(block);
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(block);
+        }
     });
 
     return future.wait();
