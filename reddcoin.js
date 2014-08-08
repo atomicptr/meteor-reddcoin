@@ -163,11 +163,11 @@ reddcoin.prototype.lock = function() {
     return future.wait();
 };
 
-// reddcoind send to_address amount [comment]
+// reddcoind sendtoaddress to_address amount [comment]
 reddcoin.prototype.send = function(address, amount, comment) {
     var future = new Future();
 
-    this.rdd.exec("send", address, amount, comment, function(err, send) {
+    this.rdd.exec("sendtoaddress", address, amount, comment, function(err, send) {
         if(err) {
             console.log(err);
             future.return(err);
