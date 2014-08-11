@@ -226,3 +226,19 @@ reddcoin.prototype.block = function(hash) {
 
     return future.wait();
 }
+
+// reddcoin encryptwallet passphrase
+reddcoin.prototype.encryptwallet = function(passphrase) {
+    var future = new Future();
+
+    this.rdd.exec("encryptwallet", passphrase, function(err, done) {
+        if(err) {
+            console.log(err);
+            future.return(err);
+        } else {
+            future.return(done);
+        }
+    });
+
+    return future.wait();
+}

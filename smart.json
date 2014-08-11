@@ -3,6 +3,6 @@
     "description": "Simple library to use reddcoind with meteor",
     "homepage": "https://github.com/kasok/meteor-reddcoin",
     "author": "Christopher Kaster <ikasoki@gmail.com> (http://christopher.kaster.ws)",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "git": "https://github.com/kasoki/meteor-reddcoin.git"
 }
