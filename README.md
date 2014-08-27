@@ -36,18 +36,11 @@ balance = rdd.balance();
 console.log("Balance after transaction: " + balance);
 ```
 
-## Install with the new shiny meteor 0.9 package system
+## Install
 
 Inside your project folder run
 
     meteor add kasoki:meteor-reddcoin
-
-
-## Install with Meteorite (deprecated)
-
-Inside your project folder run
-
-    mrt add meteor-reddcoin
 
 
 ## License
