@@ -1,5 +1,7 @@
 Package.describe({
-    summary: 'Simple library to use reddcoind with meteor'
+    summary: 'Simple library to use reddcoind with meteor',
+    version: "0.1.6",
+    git: "https://github.com/kasoki/meteor-reddcoin.git"
 });
 
 Npm.depends({
@@ -8,6 +10,7 @@ Npm.depends({
 });
 
 Package.on_use(function(api) {
+  api.versionsFrom("METEOR@0.9.0");
     api.add_files('reddcoin.js', 'server');
 
     api.export('reddcoin', 'server');
